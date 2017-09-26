@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+
+    img { max-width: 100%; }
+    .grid {
+        background: url('../img/background.png') no-repeat center center;
+        background-size: cover;
+        display: grid;
+        grid-template: repeat(5,1fr) / repeat(5,1fr);
+        height: 100%;
+    
+        .area {
+            align-self: center;
+            justify-self: center;
+
+            .title {
+                h1 {
+                    color: #fff;
+                    font-family: 'digital';
+                    font-size: 200px;
+                    font-weight: normal;
+                    line-height: 160px;
+                    margin: 0;
+                    text-transform: uppercase;
+                }
+                h3 {
+                    color: #fff;
+                    font-family: 'robotoregular';
+                    font-size: 47px;
+                    font-weight: normal;
+                    line-height: 36px;
+                    margin: 0;
+                    text-align: right;
+                }
+            }
+            .button {
+                color: #fff;
+                font-family: 'digital';
+                font-size: 48px;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media(max-width:960px), screen and (max-height: 768px) and (orientation: landscape){ 
+    
+}
+@media(max-width:800px){ 
+    
+}
+
+@font-face {
+    font-family: 'digital';
+    src: url('../fonts/djb_get_digital-webfont.woff2') format('woff2'),
+         url('../fonts/djb_get_digital-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+         url('../fonts/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
