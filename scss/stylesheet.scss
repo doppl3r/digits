@@ -1,7 +1,27 @@
 body {
     margin: 0;
 
+    a { text-decoration: none; color: #fff; }
     img { max-width: 100%; }
+    h1, h2, h3, h4 { 
+        color: #fff;
+        font-family: 'digital';
+        font-weight: normal;
+        text-transform: uppercase;
+        margin: 0;
+    }
+    h1 { font-size: 200px; line-height: 160px; }
+    h2 { font-size: 120px; line-height: 90px; }
+    h3 { font-size: 60px; line-height: 52px; }
+    h4 { font-size: 47px; line-height: 36px; }
+    p { 
+        color: #fff;
+        font-family: 'robotoregular';
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+    }
+
     .grid {
         background: url('../img/background.png') no-repeat center center;
         background-size: cover;
@@ -13,26 +33,17 @@ body {
             align-self: center;
             justify-self: center;
 
-            .title {
-                h1 {
-                    color: #fff;
-                    font-family: 'digital';
-                    font-size: 200px;
-                    font-weight: normal;
-                    line-height: 160px;
-                    margin: 0;
-                    text-transform: uppercase;
-                }
-                h3 {
-                    color: #fff;
-                    font-family: 'robotoregular';
-                    font-size: 47px;
-                    font-weight: normal;
-                    line-height: 36px;
-                    margin: 0;
-                    text-align: right;
-                }
-            }
+            &.logo { grid-area: 1/1; }
+            &.title-1 { grid-area: 2/2/4/5; }
+            &.title-2 { grid-area: 2/2/3/5; }
+            &.instructions { grid-area: 3/2/4/5; }
+            &.option-1 { grid-area: 3/2; }
+            &.option-2 { grid-area: 3/3; }
+            &.option-3 { grid-area: 3/4; }
+            &.option-4 { grid-area: 4/2; }
+            &.option-5 { grid-area: 4/3; }
+            &.option-6 { grid-area: 4/4; }
+
             .button {
                 color: #fff;
                 font-family: 'digital';
@@ -44,11 +55,22 @@ body {
     }
 }
 
-@media(max-width:960px), screen and (max-height: 768px) and (orientation: landscape){ 
-    
-}
-@media(max-width:800px){ 
-    
+@media(max-width:800px), screen and (max-height: 560px) and (orientation: landscape){
+    body {
+        h1 { font-size: 120px; line-height: 100px; }
+        h2 { font-size: 60px; line-height: 52px; }
+        h3 { font-size: 47px; line-height: 36px; }
+        h4 { font-size: 32px; line-height: 24px; }
+        p { font-size: 18px; line-height: 28px; }
+
+        .grid {
+            .area {
+                .button {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
 }
 
 @font-face {
