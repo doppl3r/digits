@@ -29,6 +29,17 @@ body {
     font-size: 24px;
     line-height: 32px;
     text-align: center; }
+  body input {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    line-height: 140px;
+    font-family: 'robotoregular';
+    font-size: 160px;
+    text-align: center;
+    width: 100%; }
+    body input:focus {
+      outline: none; }
   body .grid {
     background: url("../img/background.png") no-repeat center center;
     background-size: cover;
@@ -40,10 +51,14 @@ body {
       justify-self: center; }
       body .grid .area.logo {
         grid-area: 1/1; }
+      body .grid .area.menu {
+        grid-area: 1/5; }
       body .grid .area.title-1 {
         grid-area: 2/2/4/5; }
       body .grid .area.title-2 {
         grid-area: 2/2/3/5; }
+      body .grid .area.input-1 {
+        grid-area: 3/1/4/6; }
       body .grid .area.instructions {
         grid-area: 3/2/4/5; }
       body .grid .area.option-1 {
@@ -58,12 +73,43 @@ body {
         grid-area: 4/3; }
       body .grid .area.option-6 {
         grid-area: 4/4; }
+      body .grid .area.rounds {
+        grid-area: 5/1/6/3; }
+        body .grid .area.rounds img {
+          width: 40px;
+          height: 40px;
+          margin: 0 0 0 4px; }
+      body .grid .area.clock {
+        grid-area: 5/5; }
+        body .grid .area.clock img {
+          width: 64px;
+          height: 64px; }
       body .grid .area .button {
         color: #fff;
         font-family: 'digital';
         font-size: 48px;
         text-transform: uppercase;
         text-decoration: none; }
+      body .grid .area .menu-button {
+        padding: 24px 12px;
+        display: inline-block; }
+        body .grid .area .menu-button .menu-icon {
+          background-color: #ffffff;
+          display: block;
+          height: 3px;
+          position: relative;
+          width: 29px; }
+          body .grid .area .menu-button .menu-icon:before, body .grid .area .menu-button .menu-icon:after {
+            background-color: #ffffff;
+            content: '';
+            display: block;
+            height: inherit;
+            width: inherit;
+            position: absolute; }
+          body .grid .area .menu-button .menu-icon:before {
+            top: -9px; }
+          body .grid .area .menu-button .menu-icon:after {
+            top: 9px; }
 
 @media (max-width: 800px), screen and (max-height: 560px) and (orientation: landscape) {
   body h1 {
@@ -81,6 +127,16 @@ body {
   body p {
     font-size: 18px;
     line-height: 28px; }
+  body input {
+    font-size: 64px;
+    line-height: 56px; }
+  body .grid .area.logo h4 {
+    padding-left: 12px; }
+  body .grid .area.rounds {
+    grid-area: 5/1/6/3; }
+    body .grid .area.rounds img {
+      width: 24px;
+      height: 24px; }
   body .grid .area .button {
     font-size: 24px; } }
 

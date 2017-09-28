@@ -21,6 +21,18 @@ body {
         line-height: 32px;
         text-align: center;
     }
+    input {
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        line-height: 140px;
+        font-family: 'robotoregular';
+        font-size: 160px;
+        text-align: center;
+        width: 100%;
+
+        &:focus { outline: none; }
+    }
 
     .grid {
         background: url('../img/background.png') no-repeat center center;
@@ -34,8 +46,10 @@ body {
             justify-self: center;
 
             &.logo { grid-area: 1/1; }
+            &.menu { grid-area: 1/5; }
             &.title-1 { grid-area: 2/2/4/5; }
             &.title-2 { grid-area: 2/2/3/5; }
+            &.input-1 { grid-area: 3/1/4/6; }
             &.instructions { grid-area: 3/2/4/5; }
             &.option-1 { grid-area: 3/2; }
             &.option-2 { grid-area: 3/3; }
@@ -43,6 +57,8 @@ body {
             &.option-4 { grid-area: 4/2; }
             &.option-5 { grid-area: 4/3; }
             &.option-6 { grid-area: 4/4; }
+            &.rounds { grid-area: 5/1/6/3; img { width: 40px; height: 40px; margin: 0 0 0 4px; }}
+            &.clock { grid-area: 5/5; img { width: 64px; height: 64px; }}
 
             .button {
                 color: #fff;
@@ -50,6 +66,28 @@ body {
                 font-size: 48px;
                 text-transform: uppercase;
                 text-decoration: none;
+            }
+            .menu-button {
+                padding: 24px 12px; display: inline-block;
+
+                .menu-icon {
+                    background-color: #ffffff;
+                    display: block;
+                    height: 3px;
+                    position: relative;
+                    width: 29px;
+    
+                    &:before, &:after {
+                        background-color: #ffffff;
+                        content: '';
+                        display: block;
+                        height: inherit;
+                        width: inherit;
+                        position: absolute;
+                    }
+                    &:before { top: -9px; }
+                    &:after { top: 9px; }
+                }
             }
         }
     }
@@ -62,12 +100,13 @@ body {
         h3 { font-size: 47px; line-height: 36px; }
         h4 { font-size: 32px; line-height: 24px; }
         p { font-size: 18px; line-height: 28px; }
+        input {  font-size: 64px; line-height: 56px; }
 
         .grid {
             .area {
-                .button {
-                    font-size: 24px;
-                }
+                &.logo { h4 {  padding-left: 12px; } }
+                &.rounds { grid-area: 5/1/6/3; img { width: 24px; height: 24px; }}
+                .button { font-size: 24px; }
             }
         }
     }

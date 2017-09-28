@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1130.105 2989.805 75.991 67.61">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #fff;
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_6_1" data-name="Symbol 6 – 1" transform="translate(0 2400)">
+    <g id="Ellipse_1" data-name="Ellipse 1" class="cls-1" transform="translate(1136.721 593.369)">
+      <ellipse class="cls-2" cx="31.281" cy="31.281" rx="31.281" ry="31.281"/>
+      <ellipse class="cls-3" cx="31.281" cy="31.281" rx="29.281" ry="29.281"/>
+    </g>
+    <path id="Path_4" data-name="Path 4" class="cls-1" d="M13.126,0A10.58,10.58,0,0,1,16.3,3.048,10.182,10.182,0,0,1,18.04,8.785a10.363,10.363,0,0,1-2.682,6.943,10.236,10.236,0,0,1-7.644,3.384,10.4,10.4,0,0,1-4.752-1.156A10.115,10.115,0,0,1,0,15.66" transform="translate(1150.144 610.916) rotate(180)"/>
+    <path id="Path_9" data-name="Path 9" class="cls-1" d="M4.914,0A10.58,10.58,0,0,0,1.74,3.048,10.182,10.182,0,0,0,0,8.785a10.363,10.363,0,0,0,2.682,6.943,10.236,10.236,0,0,0,7.644,3.384,10.4,10.4,0,0,0,4.753-1.156A10.115,10.115,0,0,0,18.04,15.66" transform="translate(1204.095 611.544) rotate(180)"/>
+    <path id="Path_6" data-name="Path 6" class="cls-1" d="M1044.744,563.648v19.716H1031.8" transform="translate(123.474 42.636)"/>
+    <path id="Path_7" data-name="Path 7" class="cls-1" d="M5.624,0,0,5.624" transform="translate(1147.033 650.375)"/>
+    <path id="Path_8" data-name="Path 8" class="cls-1" d="M5.624,0,0,5.624" transform="translate(1183.707 656) rotate(-90)"/>
+  </g>
+</svg>
