@@ -58,7 +58,7 @@ body {
             &.option-5 { grid-area: 4/3; }
             &.option-6 { grid-area: 4/4; }
             &.rounds { grid-area: 5/1/6/3; img { width: 40px; height: 40px; margin: 0 0 0 4px; }}
-            &.clock { grid-area: 5/5; img { width: 64px; height: 64px; }}
+            &.clock { grid-area: 5/5; img { width: 64px; height: 64px; animation: flickerAnimation 1s infinite; }}
 
             .button {
                 color: #fff;
@@ -126,3 +126,4 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+@keyframes flickerAnimation { 0% { opacity:1; } 50% { opacity:0; } 100% { opacity:1; }}

@@ -83,7 +83,8 @@ body {
         grid-area: 5/5; }
         body .grid .area.clock img {
           width: 64px;
-          height: 64px; }
+          height: 64px;
+          animation: flickerAnimation 1s infinite; }
       body .grid .area .button {
         color: #fff;
         font-family: 'digital';
@@ -151,3 +152,11 @@ body {
   src: url("../fonts/roboto-regular-webfont.woff2") format("woff2"), url("../fonts/roboto-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
