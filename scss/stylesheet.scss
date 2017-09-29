@@ -57,7 +57,7 @@ body {
             &.option-4 { grid-area: 4/2; }
             &.option-5 { grid-area: 4/3; }
             &.option-6 { grid-area: 4/4; }
-            &.rounds { grid-area: 5/1/6/3; img { width: 40px; height: 40px; margin: 0 0 0 4px; }}
+            &.rounds { grid-area: 5/1/6/3; img { width: 40px; height: 40px; margin: 0 0 0 8px; }}
             &.clock { grid-area: 5/5; img { width: 64px; height: 64px; animation: flickerAnimation 1s infinite; }}
 
             .button {
@@ -104,8 +104,14 @@ body {
 
         .grid {
             .area {
-                &.logo { h4 {  padding-left: 12px; } }
-                &.rounds { grid-area: 5/1/6/3; img { width: 24px; height: 24px; }}
+                &.logo { grid-area: 1/1/2/3; h4 {  padding-left: 12px; }}
+                &.menu { grid-area: 1/4/2/6; }
+                &.option-1 { grid-area: 3/1/4/3; }
+                &.option-3 { grid-area: 3/4/4/6; }
+                &.option-4 { grid-area: 4/1/5/3; }
+                &.option-6 { grid-area: 4/4/5/6; }
+                &.rounds { grid-area: 5/1/6/4; img { width: 24px; height: 24px; }}
+                &.clock { grid-area: 5/4/6/6; img { width: 24px; height: 24px; }}
                 .button { font-size: 24px; }
             }
         }
