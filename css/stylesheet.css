@@ -1,5 +1,8 @@
 body {
-  margin: 0; }
+  background: url("../img/background.png") no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  user-select: none; }
   body a {
     text-decoration: none;
     color: #fff; }
@@ -10,6 +13,7 @@ body {
     font-family: 'digital';
     font-weight: normal;
     text-transform: uppercase;
+    text-align: center;
     margin: 0; }
   body h1 {
     font-size: 200px;
@@ -41,10 +45,8 @@ body {
     body input:focus {
       outline: none; }
   body .grid {
-    background: url("../img/background.png") no-repeat center center;
-    background-size: cover;
     display: grid;
-    grid-template: repeat(5, 1fr)/repeat(5, 1fr);
+    grid-template: repeat(5, 1fr)/repeat(3, 1fr);
     height: 100%; }
     body .grid .area {
       align-self: center;
@@ -52,45 +54,49 @@ body {
       body .grid .area.logo {
         grid-area: 1/1; }
       body .grid .area.menu {
-        grid-area: 1/5; }
+        grid-area: 1/3; }
       body .grid .area.title-1 {
-        grid-area: 2/2/4/5; }
+        grid-area: 2/1/4/4; }
       body .grid .area.title-2 {
-        grid-area: 2/2/3/5; }
+        grid-area: 2/1/3/4; }
       body .grid .area.input-1 {
-        grid-area: 3/1/4/6; }
+        grid-area: 3/1/4/4; }
       body .grid .area.instructions {
-        grid-area: 3/2/4/5; }
+        grid-area: 3/2/5/3; }
       body .grid .area.option-1 {
-        grid-area: 3/2; }
+        grid-area: 4/1; }
       body .grid .area.option-2 {
-        grid-area: 3/3; }
-      body .grid .area.option-3 {
-        grid-area: 3/4; }
-      body .grid .area.option-4 {
         grid-area: 4/2; }
-      body .grid .area.option-5 {
+      body .grid .area.option-3 {
         grid-area: 4/3; }
+      body .grid .area.option-4 {
+        grid-area: 5/1; }
+      body .grid .area.option-5 {
+        grid-area: 5/2; }
       body .grid .area.option-6 {
-        grid-area: 4/4; }
+        grid-area: 5/3; }
       body .grid .area.rounds {
-        grid-area: 5/1/6/3; }
+        grid-area: 5/1/6/2; }
         body .grid .area.rounds img {
           width: 40px;
           height: 40px;
           margin: 0 0 0 8px; }
       body .grid .area.clock {
-        grid-area: 5/5; }
+        grid-area: 5/3; }
         body .grid .area.clock img {
           width: 64px;
           height: 64px;
           animation: flickerAnimation 1s infinite; }
       body .grid .area .button {
         color: #fff;
+        cursor: pointer;
         font-family: 'digital';
         font-size: 48px;
         text-transform: uppercase;
         text-decoration: none; }
+        body .grid .area .button p {
+          text-transform: capitalize;
+          margin-bottom: 0px; }
       body .grid .area .menu-button {
         padding: 24px 12px;
         display: inline-block; }
@@ -131,30 +137,16 @@ body {
   body input {
     font-size: 64px;
     line-height: 56px; }
-  body .grid .area.logo {
-    grid-area: 1/1/2/3; }
-    body .grid .area.logo h4 {
-      padding-left: 12px; }
-  body .grid .area.menu {
-    grid-area: 1/4/2/6; }
-  body .grid .area.option-1 {
-    grid-area: 3/1/4/3; }
-  body .grid .area.option-3 {
-    grid-area: 3/4/4/6; }
-  body .grid .area.option-4 {
-    grid-area: 4/1/5/3; }
-  body .grid .area.option-6 {
-    grid-area: 4/4/5/6; }
-  body .grid .area.rounds {
-    grid-area: 5/1/6/4; }
-    body .grid .area.rounds img {
-      width: 24px;
-      height: 24px; }
-  body .grid .area.clock {
-    grid-area: 5/4/6/6; }
-    body .grid .area.clock img {
-      width: 24px;
-      height: 24px; }
+  body .grid .area.logo h4 {
+    padding-left: 12px; }
+  body .grid .area.instructions {
+    grid-area: 2/1/5/4; }
+  body .grid .area.rounds img {
+    width: 24px;
+    height: 24px; }
+  body .grid .area.clock img {
+    width: 24px;
+    height: 24px; }
   body .grid .area .button {
     font-size: 24px; } }
 

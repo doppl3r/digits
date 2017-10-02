@@ -13,12 +13,58 @@
 			<div class="area logo"><h4><a href="index.html">digits</a></h4></div>
 			<div class="area menu"><a href="exit.html" class="menu-button"><span class="menu-icon"></span></a></div>
 			<div class="area title-2"><h2>options</h2></div>
-			<div class="area option-1"><a href="" class="button">numbers</a></div>
-			<div class="area option-2"><a href="" class="button">forward</a></div>
-			<div class="area option-3"><a href="" class="button">visual</a></div>
-			<div class="area option-5"><a href="instructions.html" class="button">continue</a></div>
+			<div class="area option-1">
+				<div id="type" class="button">
+					<p>Type</p>
+					<span class="data">numbers</span>
+				</div>
+			</div>
+			<div class="area option-2">
+				<div id="direction" class="button">
+					<p>Direction</p>
+					<span class="left-arrow"><</span>
+					<span class="data">forward</span>
+					<span class="right-arrow">></span>
+				</div>
+			</div>
+			<div class="area option-3">
+				<div id="output" class="button">
+					<p>Output</p>
+					<span class="left-arrow"><</span>
+					<span class="data">visual</span>
+					<span class="right-arrow">></span>
+				</div>
+			</div>
+			<div class="area option-5"><a id="continue" href="instructions.html" class="button">continue<span>></span></a></div>
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/anime.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+				function updateLocalStorage(){
+					localStorage.setItem('type', $('#type .data').html());
+					localStorage.setItem('direction', $('#direction .data').html());
+					localStorage.setItem('output', $('#output .data').html());
+				}
+				updateLocalStorage();
+
+				//button listeners
+				$('#type').on('click', function(){
+					if ($('#type .data').html() == 'numbers') $('#type .data').html('numbers'); //set to 'letters' eventually
+					else $('#type .data').html('numbers');
+					updateLocalStorage();
+				});
+				$('#direction').on('click', function(){
+					if ($('#direction .data').html() == 'forward') $('#direction .data').html('backwards');
+					else $('#direction .data').html('forward');
+					updateLocalStorage();
+				});
+				$('#output').on('click', function(){
+					if ($('#output .data').html() == 'visual') $('#output .data').html('audio');
+					else $('#output .data').html('visual');
+					updateLocalStorage();
+				});
+			});
+		</script>
 	</body>
 </html>
