@@ -23,8 +23,10 @@ body {
     font-size: 120px;
     line-height: 90px; }
   body h3 {
-    font-size: 60px;
-    line-height: 52px; }
+    font-size: 48px;
+    line-height: 52px;
+    font-family: 'robotoregular';
+    text-transform: initial; }
   body h4 {
     font-size: 47px;
     line-height: 36px; }
