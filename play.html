@@ -76,7 +76,7 @@
 						var interval = setInterval(function(){
 							if (i < correctString.length){ 
 								$('.listen img').fadeTo(100, 1, function(){ $('.listen img').fadeTo(900, 0); }); //blink alpha
-								$('#audio-'+correctString.charAt(i))[0].play();
+								$('#audio-'+correctString.charAt(i)).trigger('play');
 								i++;
 							}
 							else { 
@@ -94,7 +94,7 @@
 						var interval = setInterval(function(){
 							if (i < correctString.length){ 
 								$('.listen img').fadeTo(100, 1, function(){ $('.listen img').fadeTo(900, 0); }); //blink alpha
-								$('#audio-'+correctString.charAt(i))[0].play();
+								$('#audio-'+correctString.charAt(i)).trigger('play');
 								i++;
 							}
 							else { 
@@ -164,6 +164,29 @@
 					if(index > str.length-1) return str;
 					return str.substr(0,index) + chr + str.substr(index+1);
 				}
+
+				//enable audio for safari browsers
+				/* function enableAudio(element, audio, onEnd){
+					var callback = false;
+					var click = false;
+					click = function(e){
+						var forceStop = function () {
+							audio.removeEventListener('play', forceStop, false);
+							audio.pause();
+							element.removeEventListener('touchstart', click, false);
+							if(onEnd) onEnd();
+						};
+						var progress  = function () {
+							audio.removeEventListener('canplaythrough', progress, false);
+							if (callback) callback();
+						};
+						audio.addEventListener('play', forceStop, false);
+						audio.addEventListener('canplaythrough', progress, false);
+						try { audio.play(); }
+						catch (e) { callback = function () { callback = false; audio.play(); }; }
+					};
+					element.addEventListener('touchstart', click, false);
+				} */
 				
 				play(); //initialize everything immediately
 			});

@@ -2,6 +2,7 @@ body {
   background: url("../img/background.png") no-repeat center center;
   background-size: cover;
   margin: 0;
+  overflow: hidden;
   user-select: none; }
   body a {
     text-decoration: none;
@@ -32,6 +33,7 @@ body {
     font-family: 'robotoregular';
     font-size: 24px;
     line-height: 32px;
+    padding: 0 5%;
     text-align: center; }
   body input {
     background-color: transparent;
