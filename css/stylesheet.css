@@ -171,6 +171,10 @@ body {
   body .grid .area.clock img {
     width: 24px;
     height: 24px; }
+  body .grid .area.listen img {
+    opacity: 0;
+    width: 64px;
+    height: 64px; }
   body .grid .area .button {
     font-size: 24px; } }
 

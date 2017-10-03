@@ -119,6 +119,7 @@ body {
                 &.instructions { grid-area: 2/1/5/4; }
                 &.rounds { img { width: 24px; height: 24px; }}
                 &.clock { img { width: 24px; height: 24px; }}
+                &.listen { img { opacity: 0; width: 64px; height: 64px; }}
                 .button { font-size: 24px; }
             }
         }
