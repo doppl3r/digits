@@ -44,6 +44,9 @@ body {
     width: 100%; }
     body input:focus {
       outline: none; }
+    body input::-webkit-outer-spin-button, body input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
   body .grid {
     display: grid;
     grid-template: repeat(5, 1fr)/repeat(3, 1fr);

@@ -33,8 +33,9 @@
 				//create a new string
 				function createString(length){ //create number or letter string based on options
 					var text = "";
-					var numType = localStorage.getItem('type') == "numbers"; //isNum
-					var possible = numType ? "0123456789" : "abcdefghijklmnopqrstuvwxyz";
+					var numType = localStorage.getItem('type') == 'numbers'; //isNum
+					var possible = numType ? '0123456789' : 'abcdefghijklmnopqrstuvwxyz';
+					input.attr('type', numType ? 'number' : 'text'); //edit input type
 					for (var i=0; i < length; i++) text+= possible.charAt(Math.floor(Math.random() * possible.length));
 					return text;
 				}
