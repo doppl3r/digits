@@ -63,7 +63,8 @@ body {
             &.option-6 { grid-area: 5/3; }
             &.rounds { grid-area: 5/1/6/2; img { display: inline-block; width: 40px; height: 40px; margin: 0 0 8px 8px; }}
             &.clock { grid-area: 5/3; img { width: 64px; height: 64px; animation: flickerAnimation 1s infinite; }}
-            &.submit-button { grid-area: 5/3; img { cursor: pointer; width: 128px; height: 128px; }}
+            &.listen { grid-area: 3/1/4/4; img { opacity: 0; width: 256px; height: 256px; pointer-events: none; }}
+            &.submit-button { grid-area: 5/3; img { cursor: pointer; width: 128px; height: 128px; margin: 0 8px 8px -8px; }}
 
             .button {
                 color: #fff;
