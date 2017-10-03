@@ -59,14 +59,16 @@ body {
             &.option-4 { grid-area: 5/1; }
             &.option-5 { grid-area: 5/2; }
             &.option-6 { grid-area: 5/3; }
-            &.rounds { grid-area: 5/1/6/2; img { width: 40px; height: 40px; margin: 0 0 0 8px; }}
+            &.rounds { grid-area: 5/1/6/2; img { display: inline-block; width: 40px; height: 40px; margin: 0 0 8px 8px; }}
             &.clock { grid-area: 5/3; img { width: 64px; height: 64px; animation: flickerAnimation 1s infinite; }}
+            &.submit-button { grid-area: 5/3; img { cursor: pointer; width: 128px; height: 128px; }}
 
             .button {
                 color: #fff;
                 cursor: pointer;
                 font-family: 'digital';
                 font-size: 48px;
+                text-align: center;
                 text-transform: uppercase;
                 text-decoration: none;
 
@@ -96,6 +98,7 @@ body {
             }
         }
     }
+    .blink { animation: flickerAnimation 1s infinite; }
 }
 
 @media(max-width:800px), screen and (max-height: 560px) and (orientation: landscape){
@@ -105,7 +108,7 @@ body {
         h3 { font-size: 47px; line-height: 36px; }
         h4 { font-size: 32px; line-height: 24px; }
         p { font-size: 18px; line-height: 28px; }
-        input {  font-size: 64px; line-height: 56px; }
+        input {  font-size: 64px; line-height: 56px; &:disabled { user-select: none; pointer-events: none; }}
 
         .grid {
             .area {

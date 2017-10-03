@@ -35,7 +35,13 @@
 					<span class="right-arrow">></span>
 				</div>
 			</div>
-			<div class="area option-5"><a id="continue" href="instructions.html" class="button">continue<span>></span></a></div>
+			<div class="area option-4">
+				<div id="rounds" class="button">
+					<p>Rounds</p>
+					<span class="data">7</span>
+				</div>
+			</div>
+			<div class="area option-6"><a id="continue" href="instructions.html" class="button">continue<span>></span></a></div>
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/anime.min.js"></script>
@@ -45,6 +51,12 @@
 					localStorage.setItem('type', $('#type .data').html());
 					localStorage.setItem('direction', $('#direction .data').html());
 					localStorage.setItem('output', $('#output .data').html());
+					localStorage.setItem('rounds', $('#rounds .data').html());
+					localStorage.setItem('currentRound', 0);
+					localStorage.setItem('roundList', ''); //empty round list
+					for (var i=0; i < parseInt(localStorage.getItem('rounds')); i++){
+						localStorage.setItem('roundList', localStorage.getItem('roundList')+"0");
+					}
 				}
 				updateLocalStorage();
 

@@ -28,7 +28,11 @@
 				var output = localStorage.getItem('output');
 
 				//update instructions
-				if (type == 'numbers' && direction == 'forward' && output == 'visual'){ 
+				if (type == 'letters' && direction == 'forward' && output == 'visual'){} //for future options
+				else if (type == 'letters' && direction == 'backwards' && output == 'visual'){} //for future options
+				else if (type == 'letters' && direction == 'forward' && output == 'audio'){} //for future options
+				else if (type == 'letters' && direction == 'backwards' && output == 'audio'){} //for future options
+				else if (type == 'numbers' && direction == 'forward' && output == 'visual'){ 
 					$('.instructions').html(
 						'<p><strong><em>Visual + Forward</em></strong></p>'+
 						'<p>On the following screen, you will see a set of numbers displayed for a short period of time. As soon as the numbers disappear, please type the numbers back in.</p>'

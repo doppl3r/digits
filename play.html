@@ -13,19 +13,81 @@
 			<div class="area logo"><h4><a href="index.html">digits</a></h4></div>
 			<div class="area menu"><a href="exit.html" class="menu-button"><span class="menu-icon"></span></a></div>
 			<div class="area title-2"><p>Begin memorizing</p></div>
-			<div class="area input-1"><input value="3456872"></div>
-			<div class="area rounds">
-				<img src="img/checkbox-correct.svg">
-				<img src="img/checkbox-correct.svg">
-				<img src="img/checkbox-correct.svg">
-				<img src="img/checkbox-correct.svg">
-				<img src="img/checkbox-incorrect.svg">
-				<img src="img/checkbox.svg">
-				<img src="img/checkbox.svg">
-			</div>
+			<div class="area input-1"><input disabled></div>
+			<div class="area rounds"></div>
 			<div class="area clock"><img src="img/clock.svg"></div>
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/anime.min.js"></script>
+		<script>
+			$( document ).ready(function() { 
+
+				//get local data
+				var type = localStorage.getItem('type');
+				var direction = localStorage.getItem('direction');
+				var output = localStorage.getItem('output');
+				var rounds = parseInt(localStorage.getItem('rounds'));
+				var currentRound = parseInt(localStorage.getItem('currentRound'));
+				var input = $('.input-1 input');
+				
+				//create a new string
+				function createString(length){ //create number or letter string based on options
+					var text = "";
+					var numType = localStorage.getItem('type') == "numbers"; //isNum
+					var possible = numType ? "0123456789" : "abcdefghijklmnopqrstuvwxyz";
+					for (var i=0; i < length; i++) text+= possible.charAt(Math.floor(Math.random() * possible.length));
+					return text;
+				}
+				var correctString = createString(7);
+
+				//render rounds 'checkboxes' null, correct, or incorrect
+				for (var i=0; i < rounds; i++){
+					var roundList = localStorage.getItem('roundList');
+					if (roundList.charAt(i) == "0") $('.rounds').append('<img src="img/checkbox.svg">');
+					else if (roundList.charAt(i) == "1") $('.rounds').append('<img src="img/checkbox-correct.svg">');
+					else if (roundList.charAt(i) == "2") $('.rounds').append('<img src="img/checkbox-incorrect.svg">');
+				}
+
+				//initialize gamemode based on user options
+				if (output == 'visual' && direction == 'forward'){
+					input.val(correctString); //add new string
+					setTimeout(function(){
+						//remove text and allow user to type
+						$('.title-2 p').html('Type what you remember.');
+						$('.clock').remove();
+						$('.grid').append('<div class="area submit-button"><img src="img/submit.svg"></div>');
+
+						//update input field
+						input.prop( "disabled", false ); //enable input
+						input.val('');
+						input.focus();
+
+						//add listeners
+						input.on("keypress", function(e){ 
+							$('.submit-button').addClass('blink'); //enable blinking
+							if (e.which == 13) checkAnswer();
+						});
+						$('.submit-button').on('click', function(){ checkAnswer(); });
+					}, 5000);
+				}
+
+				function checkAnswer(){
+					if (input.val() == correctString){ localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 1)); }
+					else { localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 2)); }
+					currentRound += 1;
+					localStorage.setItem('currentRound', currentRound);
+
+					//go to next round or results page
+					if (currentRound < rounds) location.reload();
+					else location.href = 'results.html';
+				}
+
+				//useful for editing roundList
+				function setCharAt(str,index,chr) {
+					if(index > str.length-1) return str;
+					return str.substr(0,index) + chr + str.substr(index+1);
+				}
+			});
+		</script>
 	</body>
 </html>

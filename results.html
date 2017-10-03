@@ -12,12 +12,33 @@
 		<div class="grid">
 			<div class="area logo"><h4><a href="index.html">digits</a></h4></div>
 			<div class="area menu"><a href="exit.html" class="menu-button"><span class="menu-icon"></span></a></div>
-			<div class="area title-2"><h2>uh oh</h2></div>
-			<div class="area instructions"><p>In order to get through this activity, you have to be trying to get every answer correct! Please restart the activity so you can work on moving up a level.</p></div>
-			<div class="area option-4"><a href="play.html" class="button">retry</a></div>
+			<div class="area title-2"></div>
+			<div class="area instructions"></div>
+			<div class="area option-4"><a href="options.html" class="button">retry</a></div>
 			<div class="area option-6"><a href="index.html" class="button">home</a></div>
 		</div>
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/anime.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+				var score = 0;
+				var rounds = parseInt(localStorage.getItem('rounds'));
+				//count score
+				for (var i=0; i<rounds; i++){
+					if (localStorage.getItem('roundList').charAt(i) == "1"){
+						score++;
+					}
+				}
+				//update results based off score
+				if ((score / rounds) * 100 > 70) { //70% or greater
+					$('.title-2').html('<h2>great job</h2>');
+					$('.instructions').html('<p>You moved up a level! You are now on Level 7.</p>');
+				}
+				else {
+					$('.title-2').html('<h2>uh oh</h2>');
+					$('.instructions').html('<p>In order to get through this activity, you have to be trying to get every answer correct! Please restart the activity so you can work on moving up a level.</p>');
+				}
+			});
+		</script>
 	</body>
 </html>
