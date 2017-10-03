@@ -21,13 +21,13 @@
 		<script type="text/javascript" src="js/anime.min.js"></script>
 		<script>
 			$( document ).ready(function() { 
-
-				//get local data
+				//declare local data
 				var type = localStorage.getItem('type');
 				var direction = localStorage.getItem('direction');
 				var output = localStorage.getItem('output');
 				var rounds = parseInt(localStorage.getItem('rounds'));
 				var currentRound = parseInt(localStorage.getItem('currentRound'));
+				var correctString = ""; //this will be set by options
 				var input = $('.input-1 input');
 				
 				//create a new string
@@ -39,39 +39,28 @@
 					for (var i=0; i < length; i++) text+= possible.charAt(Math.floor(Math.random() * possible.length));
 					return text;
 				}
-				var correctString = createString(7);
 
-				//render rounds 'checkboxes' null, correct, or incorrect
-				for (var i=0; i < rounds; i++){
-					var roundList = localStorage.getItem('roundList');
-					if (roundList.charAt(i) == "0") $('.rounds').append('<img src="img/checkbox.svg">');
-					else if (roundList.charAt(i) == "1") $('.rounds').append('<img src="img/checkbox-correct.svg">');
-					else if (roundList.charAt(i) == "2") $('.rounds').append('<img src="img/checkbox-incorrect.svg">');
+				//update the user input view
+				function updateInput(){
+					//remove text and allow user to type
+					$('.title-2 p').html('Type what you remember.');
+					$('.clock').remove();
+					$('.grid').append('<div class="area submit-button"><img src="img/submit.svg"></div>');
+
+					//update input field
+					input.prop( "disabled", false ); //enable input
+					input.val('');
+					input.focus();
+
+					//add listeners
+					input.on("keypress", function(e){ 
+						$('.submit-button').addClass('blink'); //enable blinking
+						if (e.which == 13) checkAnswer();
+					});
+					$('.submit-button').on('click', function(){ checkAnswer(); });
 				}
 
-				//initialize gamemode based on user options
-				if (output == 'visual' && direction == 'forward'){
-					input.val(correctString); //add new string
-					setTimeout(function(){
-						//remove text and allow user to type
-						$('.title-2 p').html('Type what you remember.');
-						$('.clock').remove();
-						$('.grid').append('<div class="area submit-button"><img src="img/submit.svg"></div>');
-
-						//update input field
-						input.prop( "disabled", false ); //enable input
-						input.val('');
-						input.focus();
-
-						//add listeners
-						input.on("keypress", function(e){ 
-							$('.submit-button').addClass('blink'); //enable blinking
-							if (e.which == 13) checkAnswer();
-						});
-						$('.submit-button').on('click', function(){ checkAnswer(); });
-					}, 5000);
-				}
-
+				//check the correct string value
 				function checkAnswer(){
 					if (input.val() == correctString){ localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 1)); }
 					else { localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 2)); }
@@ -83,10 +72,42 @@
 					else location.href = 'results.html';
 				}
 
-				//useful for editing roundList
+				//replace session roundList chars
 				function setCharAt(str,index,chr) {
 					if(index > str.length-1) return str;
 					return str.substr(0,index) + chr + str.substr(index+1);
+				}
+
+				//render HTML rounds 'checkboxes' null, correct, or incorrect
+				for (var i=0; i < rounds; i++){
+					var roundList = localStorage.getItem('roundList');
+					if (roundList.charAt(i) == "0") $('.rounds').append('<img src="img/checkbox.svg">');
+					else if (roundList.charAt(i) == "1") $('.rounds').append('<img src="img/checkbox-correct.svg">');
+					else if (roundList.charAt(i) == "2") $('.rounds').append('<img src="img/checkbox-incorrect.svg">');
+				}
+
+				//initialize gamemode based on user options
+				if (output == 'visual' && direction == 'forward'){
+					correctString = createString(6); //number based on user progress
+					input.val(correctString); //add new string
+					setTimeout(function(){ updateInput(); }, 5000);
+				}
+				else if (output == 'visual' && direction == 'backwards'){
+					correctString = createString(4); //number based on user progress
+					var i = 0; //current char index
+					input.fadeTo(0, 0); //set alpha to 0 immediately
+					var interval = setInterval(function(){
+						if (i < correctString.length){ 
+							input.fadeTo(100, 1, function(){ input.fadeTo(900, 0); }); //blink alpha
+							input.val(correctString.charAt(i)); i++;
+						}
+						else { 
+							input.fadeTo(0, 1); //set alpha to 1 immediately
+							correctString = correctString.split("").reverse().join("");
+							clearInterval(interval); 
+							updateInput(); 
+						}
+					}, 1000);
 				}
 			});
 		</script>
