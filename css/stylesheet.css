@@ -126,6 +126,10 @@ body {
         body .grid .area .button p {
           text-transform: capitalize;
           margin-bottom: 0px; }
+        body .grid .area .button .border {
+          border: 1px solid #fff;
+          display: inline-block;
+          padding: 12px 24px 0; }
       body .grid .area .menu-button {
         padding: 24px 12px;
         display: inline-block; }
@@ -157,7 +161,7 @@ body {
     font-size: 60px;
     line-height: 52px; }
   body h3 {
-    font-size: 47px;
+    font-size: 36px;
     line-height: 36px; }
   body h4 {
     font-size: 32px;
