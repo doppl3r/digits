@@ -87,6 +87,7 @@ function updateLocalStorage(){
     localStorage.setItem('rounds', $('#rounds .data').html());
     localStorage.setItem('currentRound', 0);
     localStorage.setItem('roundList', ''); //empty round list
+    localStorage.setItem('paused', ''); //empty round list
     for (var i=0; i < parseInt(localStorage.getItem('rounds')); i++){
         localStorage.setItem('roundList', localStorage.getItem('roundList')+"0");
     }
@@ -162,7 +163,15 @@ function play(){
     var currentRound = parseInt(localStorage.getItem('currentRound'));
     var correctString = ""; //this will be set by options
     var input = $('.input-1 input');
-    input.prop( "disabled", true ); //disable input
+    var interval; //timer
+    var paused = localStorage.getItem('paused') == 'true'; //make string a boolean
+
+    //reset timer if the game was paused
+    if (paused == true) clearInterval(interval);
+
+    //disable input
+    input.prop( "disabled", true );
+    localStorage.setItem('paused','false');
 
     //update clock and submit button for new round
     $('.submit-button').remove();
@@ -182,7 +191,7 @@ function play(){
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Visual + Backwards</em></strong></p>');
         var i = 0; //current char index
-        var interval = setInterval(function(){
+        interval = setInterval(function(){
             if (i < correctString.length){ 
                 input.fadeTo(100, 1, function(){ input.fadeTo(900, 0); }); //blink alpha
                 input.val(correctString.charAt(i));
@@ -202,7 +211,7 @@ function play(){
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Audio + Forward</em></strong></p>');
         var i = 0; //current char index
-        var interval = setInterval(function(){
+        interval = setInterval(function(){
             if (i < correctString.length){ 
                 $('.listen img').fadeTo(100, 1, function(){ $('.listen img').fadeTo(900, 0); }); //blink alpha
                 $('#audio-'+correctString.charAt(i)).trigger('play');
@@ -221,7 +230,7 @@ function play(){
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Audio + Backwards</em></strong></p>');
         var i = 0; //current char index
-        var interval = setInterval(function(){
+        interval = setInterval(function(){
             if (i < correctString.length){ 
                 $('.listen img').fadeTo(100, 1, function(){ $('.listen img').fadeTo(900, 0); }); //blink alpha
                 $('#audio-'+correctString.charAt(i)).trigger('play');
@@ -267,23 +276,25 @@ function renderRounds(rounds){
 
 //update the user input view
 function updateInput(){
-    //remove text and allow user to type
-    $('.title-2 p').html('Type what you remember.');
-    $('.clock').remove();
-    $('.grid').append('<div class="area submit-button"><img src="img/submit.svg"></div>');
-    var input = $('.input-1 input');
-
-    //update input field
-    input.prop( "disabled", false ); //enable input
-    input.val('');
-    input.focus();
-
-    //add listeners
-    input.on("keypress", function(e){ 
-        $('.submit-button').addClass('blink'); //enable blinking
-        if (e.which == 13) checkAnswer();
-    });
-    $('.submit-button').on('click', function(){ checkAnswer(); });
+    //remove text and allow user to type if the game is not paused
+    if (localStorage.getItem('paused') == 'false'){
+        $('.title-2 p').html('Type what you remember.');
+        $('.clock').remove();
+        $('.grid').append('<div class="area submit-button"><img src="img/submit.svg"></div>');
+        var input = $('.input-1 input');
+    
+        //update input field
+        input.prop( "disabled", false ); //enable input
+        input.val('');
+        input.focus();
+    
+        //add listeners
+        input.on("keypress", function(e){ 
+            $('.submit-button').addClass('blink'); //enable blinking
+            if (e.which == 13) checkAnswer();
+        });
+        $('.submit-button').on('click', function(){ checkAnswer(); });
+    }
 }
 
 //check the correct string value
@@ -315,7 +326,7 @@ function loadResults(){
         '<div class="area menu"><a onclick="exit()" class="menu-button"><span class="menu-icon"></span></a></div>'+
         '<div class="area title-2"></div>'+
         '<div class="area instructions"></div>'+
-        '<div class="area option-4"><a onclick="loadOptions()" class="button"><span class="border">retry</span></a></div>'+
+        '<div class="area option-4"><a onclick="play()" class="button"><span class="border">retry</span></a></div>'+
         '<div class="area option-6"><a onclick="loadIntro()" class="button"><span class="border">home</span></a></div>'
     );
 
@@ -345,6 +356,7 @@ function exit(){
         '<div class="area title-2"><h2>exit?</h2></div>'+
         '<div class="area instructions"><p>Exiting to the main menu will erase the progress in your current activity. Are you positive you want to exit?</p></div>'+
         '<div class="area option-4"><a onclick="loadIntro()" class="button"><span class="border">yes</span></a></div>'+
-        '<div class="area option-6"><a onclick="play()" class="button"><span class="border">no</span></a></div>'
+        '<div class="area option-6"><a onclick="loadPlay()" class="button"><span class="border">no</span></a></div>'
     );
+    localStorage.setItem('paused','true');
 }
