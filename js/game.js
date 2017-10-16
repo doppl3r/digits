@@ -33,7 +33,6 @@ function loadIntro(){
 function loadOptions(){
     $('.grid').html(
         '<div class="area logo"><h4><a href="">digits</a></h4></div>'+
-        '<div class="area menu"><a onclick="exit()" class="menu-button"><span class="menu-icon"></span></a></div>'+
         '<div class="area title-2"><h2>options</h2></div>'+
         '<div class="area option-1">'+
             '<div id="type" class="button">'+
@@ -96,7 +95,6 @@ function updateLocalStorage(){
 function loadInstructions(){
     $('.grid').html(
         '<div class="area logo"><h4><a href="">digits</a></h4></div>'+
-        '<div class="area menu"><a onclick="exit()" class="menu-button"><span class="menu-icon"></span></a></div>'+
         '<div class="area title-2"><h2>instructions</h2></div>'+
         '<div class="area instructions">'+
             '<p></p>'+
@@ -351,7 +349,7 @@ function loadResults(){
 
 function exit(){
     $('.grid').html(
-        '<div class="area logo"><h4><a href="index.html">digits</a></h4></div>'+
+        '<div class="area logo"><h4><a href="">digits</a></h4></div>'+
         '<div class="area menu"><a href="" class="menu-button"><span class="menu-icon"></span></a></div>'+
         '<div class="area title-2"><h2>exit?</h2></div>'+
         '<div class="area instructions"><p>Exiting to the main menu will erase the progress in your current activity. Are you positive you want to exit?</p></div>'+
