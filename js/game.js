@@ -305,7 +305,7 @@ function updateInput(){
         //add listeners
         input.on("keypress", function(e){ 
             $('.submit-button').addClass('blink'); //enable blinking
-            if (e.which == 13) checkAnswer();
+            //if (e.which == 13) checkAnswer();
         });
         $('.submit-button').on('click', function(){ checkAnswer(); });
     }
