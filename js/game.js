@@ -58,7 +58,7 @@ function loadOptions(){
                 '<span class="data">7</span>'+
             '</div>'+
         '</div>'+
-        '<div class="area option-6"><a id="continue" onclick="loadInstructions()" class="button"><span class="border">continue</span></a></div>'
+        '<div class="area option-6"><a id="continue" onclick="updateLocalStorage(); loadInstructions();" class="button"><span class="border">continue</span></a></div>'
     );
     updateLocalStorage();
     //button listeners
@@ -77,9 +77,16 @@ function loadOptions(){
         else $('#output .data').html('visual');
         updateLocalStorage();
     });
+    $('#rounds').on('click', function(){
+        var rounds = parseInt($('#rounds .data').html());
+        rounds = rounds <  9 ? rounds + 1 : 1;
+        $('#rounds .data').html(rounds);
+        updateLocalStorage();
+    });
 }
 
 function updateLocalStorage(){
+    //pull data from the html elements on the page and save them all locally
     localStorage.setItem('type', $('#type .data').html());
     localStorage.setItem('direction', $('#direction .data').html());
     localStorage.setItem('output', $('#output .data').html());
@@ -96,9 +103,7 @@ function loadInstructions(){
     $('.grid').html(
         '<div class="area logo"><h4><a href="">digits</a></h4></div>'+
         '<div class="area title-2"><h2>instructions</h2></div>'+
-        '<div class="area instructions">'+
-            '<p></p>'+
-        '</div>'+
+        '<div class="area instructions"></div>'+
         '<div class="area option-5"><a onclick="loadPlay()" class="button"><span class="border">start</span></a></div>'
     );
 
@@ -160,6 +165,17 @@ function play(){
     var rounds = parseInt(localStorage.getItem('rounds'));
     var currentRound = parseInt(localStorage.getItem('currentRound'));
     var correctString = ""; //this will be set by options
+
+    //TODO: request user progress for specific mode via ajax call
+    var stringLength = 4;
+
+    //add 1 easy and 1 difficult round into the mix. Ex: 4,4,4,3,5,4,4
+    if (rounds > 3){
+        if (currentRound == rounds - 4) stringLength--; //make 4th-to-last round easier
+        else if (currentRound == rounds - 3) stringLength++; //make 3nd-to-last round difficult
+    }
+
+    //set a reference to the current input field
     var input = $('.input-1 input');
     var interval; //timer
     var paused = localStorage.getItem('paused') == 'true'; //make string a boolean
@@ -178,13 +194,13 @@ function play(){
     //prepare play rules
     renderRounds(rounds);
     if (output == 'visual' && direction == 'forward'){
-        correctString = createString(6); //number based on user progress
+        correctString = createString(stringLength); //number based on user progress
         input.val(correctString); //add new string
         $('.mode').html('<p><strong><em>Visual + Forward</em></strong></p>');
         setTimeout(function(){ updateInput(); }, 5000);
     }
     else if (output == 'visual' && direction == 'backwards'){
-        correctString = createString(4); //number based on user progress
+        correctString = createString(stringLength); //number based on user progress
         input.fadeTo(0, 0); //set alpha to 0 immediately
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Visual + Backwards</em></strong></p>');
@@ -204,7 +220,7 @@ function play(){
         }, 1000);
     }
     else if (output == 'audio' && direction == 'forward'){
-        correctString = createString(4); //number based on user progress
+        correctString = createString(stringLength); //number based on user progress
         $('.listen img').fadeTo(0, 0); //set alpha to 0 immediately
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Audio + Forward</em></strong></p>');
@@ -223,7 +239,7 @@ function play(){
         }, 1000);
     }
     else if (output == 'audio' && direction == 'backwards'){
-        correctString = createString(4); //number based on user progress
+        correctString = createString(stringLength); //number based on user progress
         $('.listen img').fadeTo(0, 0); //set alpha to 0 immediately
         $('.clock').fadeTo(0,0); //hide clock
         $('.mode').html('<p><strong><em>Audio + Backwards</em></strong></p>');
@@ -324,7 +340,7 @@ function loadResults(){
         '<div class="area menu"><a onclick="exit()" class="menu-button"><span class="menu-icon"></span></a></div>'+
         '<div class="area title-2"></div>'+
         '<div class="area instructions"></div>'+
-        '<div class="area option-4"><a onclick="play()" class="button"><span class="border">retry</span></a></div>'+
+        '<div class="area option-4"><a onclick="loadOptions()" class="button"><span class="border">retry</span></a></div>'+
         '<div class="area option-6"><a onclick="loadIntro()" class="button"><span class="border">home</span></a></div>'
     );
 
