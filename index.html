@@ -9,32 +9,21 @@
 		<link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div class="grid">
-			<div class="area title-1">
-				<h1></h1>
-				<h3 style="text-align: right; opacity: 0;">by NTL Group</h3>
-			</div>
-			<div class="area option-1"><a href="" class="button" style="opacity: 0;"><span class="border">scores</span></a></div>
-			<div class="area option-3"><a href="options.html" style="opacity: 0;" class="button"><span class="border">training</span></a></div>
-		</div>
+		<div class="grid"></div>
+
+		<audio id="audio-0" ><source src="audio/0.ogg" type="audio/ogg"><source src="audio/0.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-1" ><source src="audio/1.ogg" type="audio/ogg"><source src="audio/1.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-2" ><source src="audio/2.ogg" type="audio/ogg"><source src="audio/2.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-3" ><source src="audio/3.ogg" type="audio/ogg"><source src="audio/3.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-4" ><source src="audio/4.ogg" type="audio/ogg"><source src="audio/4.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-5" ><source src="audio/5.ogg" type="audio/ogg"><source src="audio/5.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-6" ><source src="audio/6.ogg" type="audio/ogg"><source src="audio/6.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-7" ><source src="audio/7.ogg" type="audio/ogg"><source src="audio/7.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-8" ><source src="audio/8.ogg" type="audio/ogg"><source src="audio/8.mp3" type="audio/mpeg"></audio>
+		<audio id="audio-9" ><source src="audio/9.ogg" type="audio/ogg"><source src="audio/9.mp3" type="audio/mpeg"></audio>
+
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/anime.min.js"></script>
-		<script>
-			$( document ).ready(function() {
-				var text = "";
-				var numList = ['215129', '511122', '116174', '716132', '612123', '613121', '617127', '213112', '715134', 'd12106', 'd14125', 'di9125', 'di2143', 'dig025', 'dig069', 'digi25', 'digi32', 'digit4', 'digit3', 'digits' ];
-				var index = 0;
-				var interval = setInterval(function(){
-					$('.title-1 h1').html(numList[index]);
-					if (index < numList.length) index++;
-					else{ 
-						clearInterval(interval); 
-						$('.title-1 h3').css('opacity','1');
-						$('.option-1 a').css('opacity','1');
-						$('.option-3 a').css('opacity','1');
-					}
-				}, 50);
-			});
-		</script>
+		<script type="text/javascript" src="js/game.js"></script>
 	</body>
 </html>
