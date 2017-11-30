@@ -190,6 +190,7 @@ function play(){
     //update clock and submit button for new round
     $('.submit-button').remove();
     $('.grid').append('<div class="area clock"><img src="img/clock.svg"></div>');
+    $('.title-2 p').html('Begin memorizing');
     
     //prepare play rules
     renderRounds(rounds);
@@ -214,6 +215,7 @@ function play(){
             else { 
                 input.fadeTo(0, 1); //set alpha to 1 immediately
                 correctString = correctString.split("").reverse().join("");
+                localStorage.setItem('correctString', correctString);
                 clearInterval(interval); //stop interval
                 updateInput(); 
             }
@@ -253,6 +255,7 @@ function play(){
             else { 
                 input.fadeTo(0, 1); //set alpha to 1 immediately
                 correctString = correctString.split("").reverse().join("");
+                localStorage.setItem('correctString', correctString);
                 clearInterval(interval); //stop interval
                 updateInput();
             }
@@ -303,11 +306,11 @@ function updateInput(){
         input.focus();
     
         //add listeners
+        $('.submit-button').on('click', function(){ checkAnswer(); });
         input.on("keypress", function(e){ 
             $('.submit-button').addClass('blink'); //enable blinking
-            //if (e.which == 13) checkAnswer();
+            if (e.which == 13) $('.submit-button').click();
         });
-        $('.submit-button').on('click', function(){ checkAnswer(); });
     }
 }
 
@@ -318,8 +321,15 @@ function checkAnswer(){
     var currentRound = parseInt(localStorage.getItem('currentRound'));
     var rounds = parseInt(localStorage.getItem('rounds'));
 
-    if (input.val() == correctString){ localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 1)); }
-    else { localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 2)); }
+    if (input.val() == correctString){ 
+        localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 1));
+        $('#audio-correct').trigger('play');
+    }
+    else { 
+        localStorage.setItem("roundList", setCharAt(localStorage.getItem("roundList"), currentRound, 2));
+        $('#audio-incorrect').trigger('play');
+    }
+    input.val(''); //clear input for next round
     currentRound += 1;
     localStorage.setItem('currentRound', currentRound);
 

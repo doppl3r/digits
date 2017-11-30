@@ -100,7 +100,7 @@ body {
         body .grid .area.clock img {
           width: 64px;
           height: 64px;
-          animation: flickerAnimation 1s infinite; }
+          animation: flickerAnimation 5s infinite; }
       body .grid .area.listen {
         grid-area: 3/1/4/4; }
         body .grid .area.listen img {
@@ -151,7 +151,7 @@ body {
           body .grid .area .menu-button .menu-icon:after {
             top: 9px; }
   body .blink {
-    animation: flickerAnimation 1s infinite; }
+    animation: flickerAnimation 5s infinite; }
 
 @media (max-width: 800px), screen and (max-height: 560px) and (orientation: landscape) {
   body h1 {
@@ -208,6 +208,6 @@ body {
   0% {
     opacity: 1; }
   50% {
-    opacity: 0; }
+    opacity: 0.5; }
   100% {
     opacity: 1; } }
